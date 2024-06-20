@@ -16,6 +16,10 @@ import calendar
 import workalendar
 from astral.sun import sun
 from astral import LocationInfo
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score, roc_auc_score
+from sklearn.metrics import mean_squared_error, r2_score, f1_score, roc_curve, auc
 
 class Tools:
     @staticmethod
@@ -27,6 +31,59 @@ class Tools:
         tmp.plot(kind="barh", y="mean", legend=False,
                 xerr="std", title=target, color='green')
         plt.show()
+
+    @staticmethod
+    def find_optimal_threshold(y_true, y_prob, func):
+        thresholds = np.linspace(0, 1, 1000) 
+        max_score = -np.inf
+        optimal_threshold = None
+        
+        for threshold in thresholds:
+            y_pred = (y_prob >= threshold).astype(int) 
+            score = func(y_true, y_pred) 
+
+            if score > max_score:
+                max_score = score
+                optimal_threshold = threshold
+        
+        return optimal_threshold, max_score
+    
+    @staticmethod
+    def performance_report(y_test, y_prob, optimal_threshold):
+        # Create a heatmap
+        sns.heatmap(confusion_matrix((y_test == 1).astype(int), (y_prob[:,1] > optimal_threshold[0]).astype(int)), 
+                    annot=True, 
+                    fmt='d', 
+                    cmap='Blues', 
+                )
+
+        # Add labels, title, and display the plot
+        plt.xlabel('Predicted')
+        plt.ylabel('Actual')
+        plt.title('Confusion Matrix')
+        plt.show()
+
+        fpr, tpr, thresholds = roc_curve(y_test, y_prob[:,1])
+        roc_auc = auc(fpr, tpr)
+
+        plt.figure(figsize=(8, 6))
+        plt.plot(fpr, tpr, color='blue', lw=2, label=f'ROC curve (AUC = {roc_auc:.2f})')
+        plt.plot([0, 1], [0, 1], color='gray', linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('Receiver Operating Characteristic (ROC) Curve')
+        plt.legend(loc="lower right")
+        plt.show()
+
+        print(classification_report((y_test == 1).astype(int), (y_prob[:,1] > optimal_threshold[0]).astype(int)))
+
+    @staticmethod
+    def get_tree_model_feature_importances(model, columns):
+        importances = model.feature_importances_
+        feature_importance_dict = dict(zip(columns, importances))
+        return pd.Series(feature_importance_dict).sort_values(ascending=False)
 
 class RawDataToReturns(BaseEstimator, TransformerMixin):
     def fit(self, X):

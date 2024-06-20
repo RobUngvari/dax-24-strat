@@ -1,0 +1,44 @@
+selected_features:
+- volume_spy_day1
+- year_days_passed
+- month_first_day
+- last_friday
+- sunrise_dusk
+- business_days_in_month
+- non_business_days_in_month
+- close_gdaxi_kmomentum
+- close_gld_avgvol5d
+- close_spy_avgvol5d
+- close_gdaxi_avgvol3d
+- high_bnd_avghigh_vol5d
+- high_gld_avghigh_vol3d
+- high_gld_avghigh_vol5d
+- high_gdaxi_avghigh_vol5d
+- low_gld_avglow_vol5d
+- low_ief_avglow_vol5d
+- low_spy_avglow_vol5d
+- close_bnd_avggld_corr10d
+- close_bnd_avggld_corr30d
+- close_spy_avggld_corr30d
+- close_gdaxi_avggld_corr10d
+- close_gdaxi_avggld_corr30d
+- close_ief_avgspy_corr10d
+- close_gdaxi_avgspy_corr10d
+- close_gdaxi_avgspy_corr30d
+- close_bnd_avggdaxi_corr10d
+- close_bnd_avggdaxi_corr30d
+- close_bnd_avgief_corr10d
+- close_bnd_avgief_corr30d
+- savgol_close_gdaxi_w10_p3
+- close_spy close_gdaxi
+threshold: 0.27627627627627627
+xgb_classifier_params:
+  colsample_bytree: 0.827531045059713
+  gamma: 0.07503077283716637
+  learning_rate: 0.0021561608426896948
+  max_depth: 17
+  min_child_weight: 6
+  n_estimators: 932
+  reg_alpha: 0.09319129325092337
+  reg_lambda: 0.07234182445120138
+  subsample: 0.6053527456561115
