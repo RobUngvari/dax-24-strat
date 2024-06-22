@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score, roc_auc_score
 from sklearn.metrics import mean_squared_error, r2_score, f1_score, roc_curve, auc
+from sklearn.model_selection import BaseCrossValidator
 
 class Tools:
     @staticmethod
@@ -406,3 +407,29 @@ class OutlierHandler(BaseEstimator, TransformerMixin):
             X[feature] = X[feature].clip(self.outlier_boundaries_[feature]['lower'], 
                                          self.outlier_boundaries_[feature]['upper'])
         return X
+
+class ReasonableTimeSeriesSplit(BaseCrossValidator):
+    def __init__(self, n_splits):
+        self.n_splits = n_splits
+
+    def split(self, X, y=None, groups=None):
+        n_samples = len(X)
+        split_size = n_samples // (self.n_splits + 1)
+        indices = np.arange(n_samples)
+
+        for i in range(self.n_splits):
+            train_start = i * split_size
+            train_end = (i + 1) * split_size
+            test_start = train_end
+            test_end = test_start + split_size
+            
+            if test_end > n_samples:
+                test_end = n_samples
+
+            train_indices = indices[train_start:train_end]
+            test_indices = indices[test_start:test_end]
+
+            yield train_indices, test_indices
+
+    def get_n_splits(self, X=None, y=None, groups=None):
+        return self.n_splits
