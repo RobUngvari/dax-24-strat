@@ -1,44 +1,86 @@
 selected_features:
+- low_ief
+- high_spy
+- close_gdaxi
+- low_ief_day1
+- low_gdaxi_day1
+- volume_gld_day1
 - volume_spy_day1
+- close_spy_day1
+- low_gld_day3
+- open_bnd_day3
+- close_ief_day3
+- high_gdaxi_day7
+- open_bnd_day7
+- close_bnd_day7
+- close_ief_day7
+- open_bnd_day20
+- open_gdaxi_day20
+- volume_bnd_day20
+- volume_ief_day20
+- close_gdaxi_day20
 - year_days_passed
+- year_days_left
 - month_first_day
 - last_friday
 - sunrise_dusk
 - business_days_in_month
 - non_business_days_in_month
 - close_gdaxi_kmomentum
+- bnd_stochastic_oscillator
+- gdaxi_stochastic_oscillator
 - close_gld_avgvol5d
+- close_ief_avgvol3d
 - close_spy_avgvol5d
 - close_gdaxi_avgvol3d
+- close_gdaxi_avgvol5d
 - high_bnd_avghigh_vol5d
 - high_gld_avghigh_vol3d
 - high_gld_avghigh_vol5d
+- high_ief_avghigh_vol5d
+- high_spy_avghigh_vol3d
+- high_spy_avghigh_vol5d
+- high_gdaxi_avghigh_vol3d
 - high_gdaxi_avghigh_vol5d
+- low_bnd_avglow_vol5d
 - low_gld_avglow_vol5d
 - low_ief_avglow_vol5d
 - low_spy_avglow_vol5d
+- low_gdaxi_avglow_vol3d
+- low_gdaxi_avglow_vol5d
 - close_bnd_avggld_corr10d
 - close_bnd_avggld_corr30d
+- close_ief_avggld_corr10d
+- close_ief_avggld_corr30d
+- close_spy_avggld_corr10d
 - close_spy_avggld_corr30d
 - close_gdaxi_avggld_corr10d
 - close_gdaxi_avggld_corr30d
+- close_bnd_avgspy_corr10d
+- close_bnd_avgspy_corr30d
 - close_ief_avgspy_corr10d
+- close_ief_avgspy_corr30d
 - close_gdaxi_avgspy_corr10d
 - close_gdaxi_avgspy_corr30d
 - close_bnd_avggdaxi_corr10d
 - close_bnd_avggdaxi_corr30d
+- close_ief_avggdaxi_corr10d
+- close_ief_avggdaxi_corr30d
 - close_bnd_avgief_corr10d
 - close_bnd_avgief_corr30d
+- savgol_close_spy_w10_p2
+- savgol_close_gdaxi_w5_p2
+- savgol_close_gdaxi_w10_p2
 - savgol_close_gdaxi_w10_p3
 - close_spy close_gdaxi
-threshold: 0.27627627627627627
+threshold: 0.2882882882882883
 xgb_classifier_params:
-  colsample_bytree: 0.827531045059713
-  gamma: 0.07503077283716637
-  learning_rate: 0.0021561608426896948
-  max_depth: 17
-  min_child_weight: 6
-  n_estimators: 932
-  reg_alpha: 0.09319129325092337
-  reg_lambda: 0.07234182445120138
-  subsample: 0.6053527456561115
+  colsample_bytree: 0.9560105522288573
+  gamma: 0.009593160373648145
+  learning_rate: 0.06194041983470603
+  max_depth: 16
+  min_child_weight: 7
+  n_estimators: 929
+  reg_alpha: 0.051981159358160355
+  reg_lambda: 0.02325862061994719
+  subsample: 0.8677011457932563

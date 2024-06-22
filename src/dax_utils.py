@@ -343,7 +343,7 @@ class MovingFunctionApplication(BaseEstimator, TransformerMixin):
         X = X.copy()
         for variable in self.variables:
             for ws in self.windows_sizes:
-                X[f'{variable}_avg{self.label}{ws}d'] = X[variable].rolling(ws).apply(self.function)
+                X[f'{variable}_{self.label}{ws}d'] = X[variable].rolling(ws).apply(self.function)
         return X.iloc[max(self.windows_sizes):,:]
     
 class Dispersion(BaseEstimator, TransformerMixin):
@@ -372,7 +372,12 @@ class SavGolFilter(BaseEstimator, TransformerMixin):
         for variable in self.variables:
             for w in self.winwow_sizes:
                 for p in self.poly_orders:
-                    X[f'savgol_{variable}_w{w}_p{p}'] = X[variable] - savgol_filter(X[variable], w, p)
+                    # X[f'savgol_{variable}_w{w}_p{p}'] = X[variable] - savgol_filter(X[variable], w, p)
+                    result = np.zeros(X[variable].shape[0])
+                    for i in range(w, X[variable].shape[0]):
+                        m = savgol_filter(X[variable][max(0, i-w):i], w, p)
+                        result[i] = m[-1]
+                    X[f'savgol_{variable}_w{w}_p{p}'] = X[variable] - result
         return X
     
 class AnomalyDetection(BaseEstimator, TransformerMixin):
