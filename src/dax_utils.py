@@ -85,6 +85,30 @@ class Tools:
         importances = model.feature_importances_
         feature_importance_dict = dict(zip(columns, importances))
         return pd.Series(feature_importance_dict).sort_values(ascending=False)
+    
+    @staticmethod
+    def backtest_performance_report(equity_curve):
+        returns = equity_curve.pct_change().dropna()
+
+        mean_return = returns.mean()
+
+        volatility = returns.std()
+
+        risk_free_rate = 0.01
+        sharpe_ratio = (mean_return - risk_free_rate) / volatility
+
+        # Maximum Drawdown
+        cumulative_returns = (1 + returns).cumprod()
+        peak = cumulative_returns.cummax()
+        drawdown = (cumulative_returns - peak) / peak
+        max_drawdown = drawdown.min()
+        
+        return {
+            'mean_return' : mean_return, 
+            'volatility' : volatility,
+            'sharpe_ratio' : sharpe_ratio,
+            'max_drawdown' : max_drawdown,
+        }
 
 class RawDataToReturns(BaseEstimator, TransformerMixin):
     def fit(self, X):

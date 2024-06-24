@@ -1,4 +1,26 @@
 selected_features:
+- low_ief
+- low_gdaxi
+- open_bnd
+- open_ief
+- open_gdaxi
+- volume_gld_day1
+- volume_ief_day1
+- volume_spy_day1
+- volume_gdaxi_day1
+- close_gld_day1
+- close_spy_day1
+- high_gld_day3
+- open_bnd_day3
+- volume_spy_day3
+- close_bnd_day3
+- close_gdaxi_day3
+- low_bnd_day7
+- high_gdaxi_day7
+- open_bnd_day7
+- open_gdaxi_day7
+- low_gld_day20
+- close_gdaxi_day20
 - year_days_passed
 - year_days_left
 - month_days_passed
@@ -8,14 +30,33 @@ selected_features:
 - sunrise_dusk
 - business_days_in_month
 - non_business_days_in_month
+- bnd_rsi
+- gld_rsi
+- gdaxi_rsi
+- gld_stochastic_oscillator
+- ief_stochastic_oscillator
+- spy_stochastic_oscillator
+- close_bnd_vol5d
 - close_gld_vol5d
+- close_ief_vol3d
+- close_ief_vol5d
+- close_spy_vol3d
 - close_spy_vol5d
 - close_gdaxi_vol5d
+- high_bnd_high_vol5d
+- high_gld_high_vol3d
+- high_gld_high_vol5d
 - high_ief_high_vol5d
+- high_spy_high_vol3d
 - high_spy_high_vol5d
-- low_bnd_low_vol5d
+- high_gdaxi_high_vol5d
+- low_gld_low_vol3d
 - low_gld_low_vol5d
+- low_ief_low_vol3d
+- low_ief_low_vol5d
+- low_spy_low_vol3d
 - low_spy_low_vol5d
+- low_gdaxi_low_vol3d
 - low_gdaxi_low_vol5d
 - close_bnd_gld_corr10d
 - close_bnd_gld_corr30d
@@ -23,6 +64,7 @@ selected_features:
 - close_ief_gld_corr30d
 - close_spy_gld_corr10d
 - close_spy_gld_corr30d
+- close_gdaxi_gld_corr10d
 - close_gdaxi_gld_corr30d
 - close_bnd_spy_corr10d
 - close_bnd_spy_corr30d
@@ -36,14 +78,19 @@ selected_features:
 - close_ief_gdaxi_corr30d
 - close_bnd_ief_corr10d
 - close_bnd_ief_corr30d
-threshold: 0.14214214214214213
+- savgol_close_spy_w10_p2
+- savgol_close_gdaxi_w5_p3
+- savgol_close_gdaxi_w10_p3
+- close_bnd close_gdaxi
+- close_ief close_spy
+threshold: 0.1841841841841842
 xgb_classifier_params:
-  colsample_bytree: 0.8562910234445663
-  gamma: 0.0671463942480997
-  learning_rate: 0.08180051582631245
-  max_depth: 8
-  min_child_weight: 6
-  n_estimators: 1273
-  reg_alpha: 0.080528660919556
-  reg_lambda: 0.03737342034779486
-  subsample: 0.8496870285851796
+  colsample_bytree: 0.9349900034477954
+  gamma: 0.06190619805741621
+  learning_rate: 0.014997010109161955
+  max_depth: 12
+  min_child_weight: 7
+  n_estimators: 935
+  reg_alpha: 0.015195050647564889
+  reg_lambda: 0.04938351867796262
+  subsample: 0.9624668636553383
