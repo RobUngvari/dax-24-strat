@@ -1,96 +1,24 @@
 selected_features:
-- low_ief
-- low_gdaxi
-- open_bnd
-- open_ief
-- open_gdaxi
-- volume_gld_day1
-- volume_ief_day1
-- volume_spy_day1
-- volume_gdaxi_day1
-- close_gld_day1
-- close_spy_day1
-- high_gld_day3
-- open_bnd_day3
-- volume_spy_day3
-- close_bnd_day3
-- close_gdaxi_day3
-- low_bnd_day7
-- high_gdaxi_day7
-- open_bnd_day7
-- open_gdaxi_day7
-- low_gld_day20
-- close_gdaxi_day20
-- year_days_passed
-- year_days_left
-- month_days_passed
-- month_first_day
-- month_length
-- last_friday
-- sunrise_dusk
-- business_days_in_month
-- non_business_days_in_month
-- bnd_rsi
-- gld_rsi
-- gdaxi_rsi
-- gld_stochastic_oscillator
-- ief_stochastic_oscillator
-- spy_stochastic_oscillator
-- close_bnd_vol5d
-- close_gld_vol5d
-- close_ief_vol3d
-- close_ief_vol5d
-- close_spy_vol3d
-- close_spy_vol5d
-- close_gdaxi_vol5d
-- high_bnd_high_vol5d
-- high_gld_high_vol3d
-- high_gld_high_vol5d
-- high_ief_high_vol5d
-- high_spy_high_vol3d
-- high_spy_high_vol5d
-- high_gdaxi_high_vol5d
-- low_gld_low_vol3d
-- low_gld_low_vol5d
-- low_ief_low_vol3d
-- low_ief_low_vol5d
-- low_spy_low_vol3d
-- low_spy_low_vol5d
-- low_gdaxi_low_vol3d
-- low_gdaxi_low_vol5d
-- close_bnd_gld_corr10d
-- close_bnd_gld_corr30d
-- close_ief_gld_corr10d
-- close_ief_gld_corr30d
-- close_spy_gld_corr10d
-- close_spy_gld_corr30d
-- close_gdaxi_gld_corr10d
-- close_gdaxi_gld_corr30d
-- close_bnd_spy_corr10d
-- close_bnd_spy_corr30d
-- close_ief_spy_corr10d
-- close_ief_spy_corr30d
-- close_gdaxi_spy_corr10d
-- close_gdaxi_spy_corr30d
-- close_bnd_gdaxi_corr10d
-- close_bnd_gdaxi_corr30d
-- close_ief_gdaxi_corr10d
-- close_ief_gdaxi_corr30d
-- close_bnd_ief_corr10d
-- close_bnd_ief_corr30d
-- savgol_close_spy_w10_p2
-- savgol_close_gdaxi_w5_p3
-- savgol_close_gdaxi_w10_p3
-- close_bnd close_gdaxi
-- close_ief close_spy
-threshold: 0.1841841841841842
+- low_gld open_spy_day20
+- high_gld high_bnd_day7
+- volume_ief volume_gld_day3
+- close_gld volume_gld_day1
+- low_spy_day1 high_spy_high_vol3d
+- low_spy_day1 low_bnd_low_vol5d
+- volume_ief_day1 close_spy_day20
+- volume_bnd_day3 volume_ief_day20
+- low_gld_day7 high_gld_day20
+- low_gld_day20 month_first_day
+- close_gld_day20 gdaxi_rsi
+- open_gdaxi_kmomentum low_spy_low_vol3d
+threshold: 0.43743743743743746
 xgb_classifier_params:
-  colsample_bytree: 0.9349900034477954
-  gamma: 0.06190619805741621
-  learning_rate: 0.014997010109161955
-  max_depth: 12
-  min_child_weight: 7
-  n_estimators: 935
-  reg_alpha: 0.015195050647564889
-  reg_lambda: 0.04938351867796262
-  subsample: 0.9624668636553383
+  colsample_bytree: 0.8261516802102762
+  gamma: 0.037610876072606714
+  learning_rate: 0.00016588382096877736
+  max_depth: 11
+  min_child_weight: 6
+  n_estimators: 986
+  reg_alpha: 0.050572017262021866
+  reg_lambda: 0.042334410117589455
+  subsample: 0.5113067189362983
