@@ -257,7 +257,7 @@ class BinaryTarget(BaseEstimator, TransformerMixin):
         indexer = pd.api.indexers.FixedForwardWindowIndexer(window_size=self.forward_looking_return-1)
         X['target'] = X['close_gdaxi'].shift(-1).rolling(window=indexer, min_periods=self.forward_looking_return//2).sum()
         X = X.dropna()
-        X['target'] = (X.target > .01).astype(int).values
+        X['target'] = (X.target < -.001).astype(int).values
         return X
 
 class BusinessDayLaggedFeatureEngine(BaseEstimator, TransformerMixin):
